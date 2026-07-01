@@ -1,0 +1,45 @@
+/* 기본 - 페이지 전체(가장 넓음) */
+
+body{
+    margin: 0 auto;
+    padding: 0; 
+    width: 70%;
+    height: 100vh;
+    background-color: #ffc2f2; 
+    font-family: 'Malgun Gothic', sans-serif;
+    
+}
+
+/* 요소 선택자 */
+h1{
+    color :azure;
+    text-align: center;
+}
+
+p{
+    color : red;
+    
+}
+
+/* 클래스 선택자 */
+.special{
+    color : rgb(17, 92, 255);
+    font-weight: bold;
+}
+
+/* 자손 선택자 */
+
+li em{
+    color : purple;
+    font-weight: bold;
+    font-size: 50px;
+    font-style: normal;
+}
+
+
+/* 자유 */
+
+li{
+    text-align: end;
+    border: 4px solid #7e7e7e;
+}
