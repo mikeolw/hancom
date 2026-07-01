@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Emmet 자동완성</title>
+</head>
+<body>
+    <!-- ul>li*N, N은 항목의 개수 -->
+    <ul>
+        <li>1번 리스트</li>
+        <li>2번 리스트</li>
+        <li>3번 리스트</li>
+        <li>4번 리스트</li>
+    </ul>
+
+    <!-- .box -->
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="card"></div>
+
+    <!-- #top -->
+    <div id="top"></div>
+    <div id="bottom"></div>
+    <div id="dos"></div>
+    
+    <!-- h1{넣을 내용} -->
+    <h1>잘가</h1>
+    <!-- 원하는 태그 (넣을 내용) -->
+    <!-- a[href="#"] -->
+    <a href="https://www.naver.com">네이버로 이동</a>
+    <!--audio[src="audio.mp4" muted controls]-->
+    <audio src="audio.mp4" muted controls></audio>
+
+    <!--
+    1. > : 안에 넣기(자식) ul>li ul 안에 li
+    2. *N : N번 반복 li*4 = li 4개
+    3. .이름 : class 이름 지정
+    4. #이름 : id 이름 지정
+    5. {넣을 내용} : 태그 안에 넣을 내용
+    6. [속성="값"] : 태그에 속성 지정
+    -->
+</body>
+</html>
+
+<!-- 
+    - 자동완성이 이루어 지는데 시간이 걸려서 쓰고 난 뒤에 잠시 기다려야 됨
+    - a[href="#"]{링크 텍스트}  의 경우 '}' 이전에 커서가 위치해야 자동완성이 됨
+-->

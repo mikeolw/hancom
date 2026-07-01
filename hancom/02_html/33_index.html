@@ -1,0 +1,115 @@
+<!DOCTYPE html>                       <!-- "이건 HTML 문서야" 선언 -->
+<!-- 
+1. 이 한 줄 안 쓰면 화면이 어떻게 깨짐? 
+- 브라우저가 HTML5로 인식하지 못하고(호환 모드로 작동), 구형 브라우저 모드로 렌더링
+- CSS, JS가 최신 표준을 따르지 않아 레이아웃 깨짐
+- 첫 줄에 반드시 있어야 함
+-->
+<html lang="ko">                        <!-- 문서 시작, 한국어 페이지 -->
+<!--
+2. lang="ko"를 "en"으로 바꾸면 뭐가 달라짐? 
+- 검색 엔진 : 페이지의 언어를 인식
+- 브라우저 번역 : 페이지 번역 기능이 켜져 있으면, 언어를 감지해 번역 여부를 결정
+- 화면 표시 : 폰트, 글자 방향 등을 언어에 맞게 최적화
+-->
+<head>                                 <!-- 화면엔 안 보이는 준비 칸 -->
+  <meta charset="UTF-8">               <!-- 한글 안 깨지게 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 
+  3. 이 viewport 줄은 무슨 일을 함? 모바일이랑 무슨 상관? 
+  - 하는 일 : 브라우저에게 이 페이지는 모바일에 맞춰 만들어졌으니, 디바이스의 실제 화면 너비에 맞춰 렌더링하라고 지시 
+  - width=device-width → 페이지 너비를 폰/태블릿의 실제 화면 너비에 맞춤
+  - initial-scale=1.0 → 처음 로드될 때 줌 레벨을 100%로 설정
+  - 모바일에서 안 쓰면 : 브라우저가 페이지를 데스크톱 버전으로 렌더링해 보기 불편함
+  -->
+  <title>회원 가입</title>              <!-- 브라우저 탭 이름 -->
+</head>
+<body>                                 <!-- 화면에 보이는 진짜 칸 -->
+  <header>                             <!-- 맨 위 머리말 -->
+    <nav aria-label="주요 메뉴">        <!-- 메뉴 모음 -->
+    <!-- 
+        4. aria-label은 왜 붙임? 없으면 누가 불편함? 
+        - 시각장애인 : 화면 낭독기(스크린 리더)가 메뉴를 "주요 메뉴"라고 읽어줌
+        - 없으면 : 페이지 구조를 읽을 수 없음 (접근성 위반)
+        - 웹 접근성 지침(WCAG) : 시각장애인, 청각장애인, 색약자, 노인 등 다양한 장애를 가진 사람들이 웹을 편하게 이용할 수 있도록 지침을 제시
+        -->
+      <ul>
+        <li><a href="#join">가입</a></li>
+        <!-- 
+        5. href="#join" 앞의 #은 무슨 뜻? 
+        - # = 페이지 내 링크 (앵커)
+        - 클릭하면 페이지 새로고침 없이 id="join"인 요소로 스크롤 이동
+        - 같은 페이지 내 다른 섹션으로 점프할 때 사용
+        -->
+      </ul>
+    </nav>
+  </header>
+
+  <main>                              <!-- 핵심 본문 -->
+    <section id="join">               <!-- 한 주제 덩어리 -->
+      <h2>회원 가입</h2>
+      <form action="/signup" method="post">
+      <!-- 
+        6. action이랑 method가 각각 뭘 정하는 거임? 
+        - action : 폼 제출 시 데이터를 보낼 서버 주소 지정 (서버 주소 : /signup)
+        - method : 데이터를 서버에 전송하는 방식 지정
+            - GET : URL에 데이터를 붙여서 전송, 검색/조회용, 보안 취약
+            - POST : 요청 본문에 데이터를 담아 전송, 회원가입/로그인
+        -->
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" required>
+        <!-- 
+        7. label의 for랑 input의 id가 똑같으면 무슨 일이 생김? 
+        - label 클릭하면 input에 포커스 이동
+        - 접근성 향상 : 스크린 리더가 label과 input을 연결해 읽어줌
+        - 폰에서 중요: 클릭 범위가 커짐
+        -->
+        <!-- 
+        8. required 빼면 어떻게 됨? type="email"은 뭘 검사함?
+        - required 없으면 : 사용자가 입력 안 해도 폼 제출 가능 (선택사항)
+        - type="email" : 브라우저가 이메일 형식(@ 포함, . 포함 등) 자동 검사, 형식 안 맞으면 제출 막음, 폰에서는 이메일 키보드 표시 
+        -->
+        <fieldset>
+          <legend>관심사</legend>
+          <label><input type="checkbox" name="tag" value="fe"> 프론트엔드</label>
+          <!-- 
+          9. checkbox 여러 개의 name을 똑같이 "tag"로 두는 이유는?
+          - 같은 name = 하나의 그룹
+          - 사용자가 여러 개를 선택하면 모두 tag라는 이름으로 서버에 전송됨
+          - 서버에서 tag 값들을 배열로 받아 처리 가능 tag=["fe", "be"]
+          - 다르면 : tage1=fe, tag2=be 이런 식으로 각각 전송되어 서버에서 처리 복잡
+
+            -->
+        </fieldset>
+        <button type="submit">가입하기</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>요금제</h2>
+      <table>
+        <thead><tr><th>플랜</th><th>가격</th></tr></thead>
+        <!-- 
+        10. thead와 tbody를 굳이 나누는 이유는? th랑 td 차이는? 
+        - 구조적 의미 명확 
+        - CSS, JS에서 스타일링/조작 용이
+        - 스크린 리더가 헤더 인식
+        -->
+        <tbody>
+          <tr><td>무료</td><td>0원</td></tr>
+          <tr><td>프로</td><td>9,900원</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; 2026 커뮤니티</small>
+    <!-- 
+    11. &copy; 는 화면에 뭐로 보임? 왜 ⓒ를 직접 안 침? 
+    - 파일 인코딩 문제 : 특수문자가 깨질 수 있음
+    - 국제 표준 : HTML 엔티티를 사용하면 브라우저가 어떤 인코딩이든 올바르게 표시
+     -->
+  </footer>
+</body>
+</html>
